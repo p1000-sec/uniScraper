@@ -21,7 +21,16 @@ except Exception as e:
     raise
 
 app = Flask(__name__)
-#mycomment
+videos = [
+    {
+        "title": "Sample Video",
+        "platform": "YouTube",
+        "thumbnail_url": "https://example.com/thumbnail.jpg",
+        "channel": "Sample Channel",
+        "published_at": "2023-01-01",
+        "description": "This is a sample video description."
+    }
+]
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
