@@ -32,19 +32,9 @@ videos = [
     }
 ]
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def home():
-    if request.method == 'POST':
-        query = request.form.get('query')
-    else:
-        query = None
-
-    if query:
-        videos = list(collection.find({"title": {"$regex": query, "$options": "i"}}))
-    else:
-        videos = list(collection.find())
-
-    return render_template('index.html', videos=videos)
+    return render_template('video_app.html', videos=videos)
 
 if __name__ == '__main__':
     app.run(debug=True)
