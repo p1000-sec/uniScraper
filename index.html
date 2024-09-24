@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video App</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .video { margin-bottom: 20px; }
+        .thumbnail { width: 320px; height: 180px; }
+    </style>
+</head>
+<body>
+    <h1>Video Listings</h1>
+    <form method="post">
+        <input type="text" name="query" placeholder="Search videos...">
+        <button type="submit">Search</button>
+    </form>
+    {% for video in videos %}
+        <div class="video">
+            <h2>{{ video.title }} ({{ video.platform }})</h2>
+            <img class="thumbnail" src="{{ video.thumbnail_url }}" alt="{{ video.title }}">
+            <p><strong>Channel:</strong> {{ video.channel }}</p>
+            <p><strong>Published At:</strong> {{ video.published_at }}</p>
+            <p>{{ video.description }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
