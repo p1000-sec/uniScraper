@@ -13,7 +13,7 @@ if not MONGODB_URI:
 
 try:
     client = MongoClient(MONGODB_URI)
-    db = client.get_default_database()
+    db = client['video_database']
     collection = db['videos']
     print("Connected to MongoDB Atlas successfully.")
 except Exception as e:

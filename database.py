@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
-load_dotenv()
-
 from pymongo import MongoClient
+
+load_dotenv()
 
 MONGODB_URI = os.getenv('MONGODB_URI')
 print(f"MONGODB_URI in database.py: {MONGODB_URI}")
@@ -12,7 +12,7 @@ if not MONGODB_URI:
 
 try:
     client = MongoClient(MONGODB_URI)
-    db = client['video_database']  # Specify the database name here
+    db = client.get_default_database()
     collection = db['videos']
     print("Connected to MongoDB Atlas successfully.")
 except Exception as e:
